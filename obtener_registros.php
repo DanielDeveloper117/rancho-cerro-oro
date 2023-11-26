@@ -3,8 +3,8 @@ include("conexion.php");
 include("funciones.php");
 
 
-$query = "SELECT * FROM usuarios; ";
-
+$query = "SELECT * FROM usuarios ";
+// --------------REALIZAR LA BUSQUEDA POR NOMBRE O APELLIDO----
 if (isset($_POST["search"]["value"])) {
     $query .= ' WHERE nombre LIKE "%' . $_POST["search"]["value"] . '%" ';
     $query .= ' OR apellidos LIKE "%' . $_POST["search"]["value"] . '%" ';
@@ -30,7 +30,7 @@ $filtered_rows = $stmt->rowCount();
 foreach ($resultado as $fila) {
     $imagen = '';
     if ($fila["imagen"] != '') {
-        $imagen = '<img src="img/' . $fila["imagen"] . '" class="img-thumbnail" width="35" height="35"/>';
+        $imagen = '<img src="img/' . $fila["imagen"] . '" class="" width="40" height="40"/>';
     }
 
     $sub_array = array();
@@ -41,8 +41,8 @@ foreach ($resultado as $fila) {
     $sub_array[] = $fila["email"];
     $sub_array[] = $imagen;
     $sub_array[] = $fila["fecha_creacion"];
-    $sub_array[] = '<button type="button" name="editar" id="' . $fila["id"] . '" class="btn btn-warning btn-xs editar">Editar</button>';
-    $sub_array[] = '<button type="button" name="borrar" id="' . $fila["id"] . '" class="btn btn-danger btn-xs borrar">Eliminar</button>';
+    $sub_array[] = '<button type="button" name="editar" id="' . $fila["id"] . '" class="btn btn-info btn-xs editar"><i style="margin-right:5px;" class="bi bi-pencil-square"></i>Editar</button>';
+    $sub_array[] = '<button type="button" name="borrar" id="' . $fila["id"] . '" class="btn btn-danger btn-xs borrar"><i style="margin-right:5px;" class="bi bi-trash"></i>Eliminar</button>';
     
     $datos[] = $sub_array; // Agregar el subarray al arreglo de datos
 }

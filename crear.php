@@ -1,12 +1,9 @@
 <?php
 
 include("conexion.php");
-//include("obtener_registro.php");
-//include("funciones.php");
-
 
 /////////////////----------------------crear registro
-if($_POST["operacion"]=="Crear"){
+if($_POST["operacion"]=="Crear"){// si el boton del modal es para crear usuario (depende de donde se le dio click)
     include("funciones.php");
     $imagen = '';
     if($_FILES["imagen_usuario"]["name"] != ''){
@@ -34,8 +31,7 @@ if($_POST["operacion"]=="Crear"){
 
 
 //////////////// ----------------- editar un registro
-if($_POST["operacion"]=="Editar"){
-    //include("funciones.php");
+if($_POST["operacion"]=="Editar"){// si el boton del modal es para editar registro (depende de donde se le dio click)
     include("obtener_registro.php");
 
     $imagen = '';
